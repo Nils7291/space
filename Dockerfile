@@ -1,17 +1,17 @@
-# Use an official Python runtime as a parent image
+# Verwende das offizielle Python-Image
 FROM python:3.12-slim
 
-# Set working directory
+# Setze das Arbeitsverzeichnis im Container
 WORKDIR /app
 
-# Copy the app files
-COPY . /app
+# Kopiere alle Dateien aus dem lokalen app-Verzeichnis in den Container
+COPY app /app
 
-# Install dependencies
-RUN pip install -r requirements.txt
+# Installiere die Abhängigkeiten
+RUN pip install -r /app/requirements.txt
 
-# Expose port 8501 (default Streamlit port)
+# Exponiere den Streamlit-Port
 EXPOSE 8501
 
-# Command to run Streamlit app
-CMD ["streamlit", "run", "space_iss_app.py"]
+# Führe die Streamlit-App aus
+CMD ["streamlit", "run", "/app/space_app.py"]
